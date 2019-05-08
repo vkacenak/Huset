@@ -268,8 +268,26 @@ main {
             width: 2rem;
             fill: white;
         }
+
+
     }
 
+        // EVENT CLICKED 
+        &-clicked{
+            transition-duration:0.7s;
+            width:100%;
+            height:100vh;
+           z-index:10000;
+           top:0;
+           left:0;
+           position:fixed;
+           margin:0;
+            & .event-img{width:100%;
+            height:100%;}
+            & .event-info{
+                padding-bottom:8rem;
+            }
+        }
     &-category {}
 
     &-date-time {
@@ -297,15 +315,25 @@ main {
         font-size: 3rem;
         font-weight: 900;
     }
-
+    &-filter-toggle{
+        display:inline-block;
+        padding:0.5rem;
+        margin-left:1rem;
+        &-active{
+            background-color: lightgray;
+            
+        }
+    }
     &-filter-btn {
         font-size: 1.8rem;
         display: inline-block;
         padding-left: 1rem;
+       
     }
 }
 
 .filter{
+    display:none;
     & h2{margin:2rem 0;
         font-weight: 700;
     }

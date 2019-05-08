@@ -70,6 +70,12 @@ body {
   display: none !important; }
 
 h1 {
+  margin: 1rem; }
+
+.dblock {
+  display: block !important; }
+
+h1 {
   font-weight: 700;
   font-size: 3rem; }
 
@@ -259,6 +265,20 @@ main {
     .event-info svg {
       width: 2rem;
       fill: white; }
+  .event-clicked {
+    transition-duration: 0.7s;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    position: fixed;
+    margin: 0; }
+    .event-clicked .event-img {
+      width: 100%;
+      height: 100%; }
+    .event-clicked .event-info {
+      padding-bottom: 8rem; }
   .event-date-time {
     display: flex;
     justify-content: space-between; }
@@ -274,24 +294,31 @@ main {
   .events h1 {
     font-size: 3rem;
     font-weight: 900; }
+  .events-filter-toggle {
+    display: inline-block;
+    padding: 0.5rem;
+    margin-left: 1rem; }
+    .events-filter-toggle-active {
+      background-color: lightgray; }
   .events-filter-btn {
     font-size: 1.8rem;
     display: inline-block;
     padding-left: 1rem; }
 
-.filter h2 {
-  margin: 2rem 0;
-  font-weight: 700; }
-
-.filter-form {
-  position: relative;
-  font-size: 1.6rem;
-  margin: 2rem; }
-  .filter-form-category, .filter-form-venue {
+.filter {
+  display: none; }
+  .filter h2 {
+    margin: 2rem 0;
+    font-weight: 700; }
+  .filter-form {
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 2rem; }
+    font-size: 1.6rem;
+    margin: 2rem; }
+    .filter-form-category, .filter-form-venue {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 2rem; }
 
 .select-checkbox {
   font-size: 1.2rem;

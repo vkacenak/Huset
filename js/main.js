@@ -1,7 +1,6 @@
 $(document).ready(function () {
     var i;
     var searchIcon = document.querySelector('.navigation__search');
-    var searchBar = document.querySelector(".search-bar");
 
     var eventsContainer = document.querySelector('.events');
     var template = document.querySelector('.event-template').content;
@@ -9,16 +8,9 @@ $(document).ready(function () {
     var catName = ["Alternative", "Avantgarde", "Hip Hop", "Improvisation", "Jazz", "People", "Pop", "Punk", "Rock", "World" ];
     var venueID = [59,54,53,60,57,58,56,55,52];
     var venueName = ["Bastard cafe", "Cinema House", "Musikkafe", "Salon K", "Spisehuset", "Stardust", "The ballroom", "Vox", "Xenon"];
-    var fetchLink = "http://viktorkacenak.com/WordpressSite/wpv1/wp-json/wp/v2/event?_embed?";
+    var fetchLink = "http://viktorkacenak.com/WordpressSite/wpv1/wp-json/wp/v2/event?_embed";
 
 
-
-    searchIcon.addEventListener("click", function () {
-        console.log('click');
-        $(".search-bar").toggleClass("search-bar-visible");
-        $(".navigation__button").toggleClass("navigation__button-search");
-        $(".navigation__background").toggleClass("navigation__background-search");
-    });
 
 
     //FILTER
@@ -27,16 +19,15 @@ $(document).ready(function () {
     var formCategoryArray = Array.prototype.slice.call(formCategory);
     var selectCategory;
     var formVenue = document.getElementsByName('venue[]');
+    var filterToggle = document.querySelector('.events-filter-toggle');
 
-    // not working
-    // toggle select deselect text based on state of checkboxes
-    for (i = 0; i < formCategoryArray.length; i++) {
-        formCategoryArray[i].addEventListener('click', function () {
-           
-
-        });
-
-    };
+    // FILTER TOGGLE 
+filterToggle.addEventListener("click", function(){
+    this.classList.toggle("events-filter-toggle-active");
+    console.log('click');
+    document.querySelector(".filter").classList.toggle("dblock")
+})
+ 
 
     // select deselect all
     var selectCategory = document.getElementById('categoryAll');
@@ -110,7 +101,6 @@ $(document).ready(function () {
         // UPDATE LINK
         console.log(checkedCategoryStr);
         let fetchLink = "http://viktorkacenak.com/WordpressSite/wpv1/wp-json/wp/v2/event?categories=" + checkedCategoryStr +"&_embed"  
-        let fetchLinkTest = "http://viktorkacenak.com/WordpressSite/wpv1/wp-json/wp/v2/event?_embed";
         console.log(fetchLink);
         JSONFetch(fetchLink);
 
@@ -152,6 +142,7 @@ function JSONFetch(link){
       
         for (i = 0; i < data.length; i++) {
             const clone = template.cloneNode(true);
+            clone.querySelector('.event').addEventListener("click", eventExpand);
                clone.querySelector('.event-img').src= data[i]._embedded['wp:featuredmedia']['0'].media_details.sizes.full.source_url;
                       
                       var catIndex = catID.findIndex(function(element) {
@@ -181,6 +172,16 @@ function JSONFetch(link){
     }
 
 };
+JSONFetch(fetchLink); // INITIAL FETCH
+
+//EVENT CLICK
+let eventCard = document.querySelectorAll(".event");
+
+function eventExpand(){
+  this.classList.add("event-clicked");
+
+
+}
 
 
 }); //JQUERY
