@@ -265,6 +265,12 @@ main {
     .event-info svg {
       width: 2rem;
       fill: white; }
+  .event-text {
+    display: none; }
+  .event-button {
+    display: none; }
+  .event-back {
+    display: none; }
   .event-clicked {
     transition-duration: 0.7s;
     width: 100%;
@@ -273,12 +279,39 @@ main {
     top: 0;
     left: 0;
     position: fixed;
-    margin: 0; }
+    margin: 0;
+    background-color: white;
+    border-radius: 0; }
     .event-clicked .event-img {
       width: 100%;
-      height: 100%; }
+      height: 40%; }
     .event-clicked .event-info {
-      padding-bottom: 8rem; }
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 8rem;
+      background-image: none;
+      color: black;
+      padding-top: 0em; }
+    .event-clicked .event-back {
+      display: block;
+      fill: white;
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      height: 2.5rem; }
+    .event-clicked svg {
+      fill: black; }
+    .event-clicked .event-text {
+      display: block; }
+    .event-clicked .event-button {
+      margin-top: 2rem;
+      display: block;
+      font-size: 2rem;
+      width: 100%;
+      color: white;
+      background-color: black;
+      border: none;
+      padding: 1.5rem 0; }
   .event-date-time {
     display: flex;
     justify-content: space-between; }

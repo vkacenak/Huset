@@ -175,11 +175,16 @@ function JSONFetch(link){
 JSONFetch(fetchLink); // INITIAL FETCH
 
 //EVENT CLICK
-let eventCard = document.querySelectorAll(".event");
+
 
 function eventExpand(){
   this.classList.add("event-clicked");
-
+this.querySelector(".event-back").addEventListener("click", function(){
+    this.parentElement.removeEventListener("click", eventExpand);  
+    this.parentElement.classList.remove("event-clicked");
+   
+  
+})
 
 }
 
